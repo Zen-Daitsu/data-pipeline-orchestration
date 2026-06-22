@@ -6,13 +6,9 @@ An Apache Airflow DAG orchestrating infrastructure provisioning, parallel data e
 The pipeline executes a synchronous 5-stage orchestration graph running on a daily interval:
 
 1. **Provisioning Engine:** Detects, installs, and validates native system services for local Docker environments.
-
 2. **Streaming Stack Deployment:** Automated system configuration of Apache Kafka infrastructure.
-
 3. **Parallel Ingestion & ETL:** Fetches compressed telemetry archives directly via HTTP from public NASA repositories, unzips sources, and leverages multi-threaded parallel extraction routines to process and map sequential block records to a structured SQLite destination.
-
 4. **Kafka Message Streaming:** Batches historical records out of database tables, applies internal GZIP serialization, and dispatches payloads onto active Kafka message queues.
-
 5. **Analytical Visualization:** Pulls dataset samples to render multi-variable lines and data trends utilizing advanced Seaborn styling pipelines.
 
 ## 2. Engineering Highlights & Trade-offs
@@ -28,6 +24,20 @@ The pipeline executes a synchronous 5-stage orchestration graph running on a dai
 * **Parallel Utilities:** Mojo-backed optimization wrappers
 * **Infrastructure Target:** Ubuntu Linux system services (Apt-get package configurations)
 
+## 5. Project Architecture
+```text
+.
+├── .gitignore
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── dag/
+│   └── project_dag.py
+├── docs/
+├── src/
+│   └── etl_pipeline.py
+└── tasks/
+```
 ## 4. Local Deployment & Setup
 
 ### Prerequisites
